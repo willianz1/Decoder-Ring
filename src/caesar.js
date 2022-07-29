@@ -8,6 +8,7 @@ const caesarModule = (function () {
 
   function caesar(input, shift, encode = true) {
     // your solution code here
+    if(shift === 0 || shift > 25 || shift < -25) return false; 
   }
 
   return {
