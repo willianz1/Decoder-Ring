@@ -22,26 +22,25 @@ const caesarModule = (function () {
     for(let i =0; i<input.length; i++){
       //if it has a letter it should shift it
       const check = alph.some((alphabet) => alphabet.includes(input[i]));
-      console.log(check); 
       if(check){
         //find the  index of the letter in alph
         let originalIndex = alph.indexOf(input[i]);
-        //need to check if shift makes it go past the array 
+        //need to check if shift makes it go past the array   
         let newIndex = originalIndex + shift; 
         
         //beginnining of the alphabet
         if(newIndex < 0){
           newIndex = newIndex + 26;
           newWord += alph[newIndex]; 
-        }
-        //end of alphabet
-        if(newIndex >= alph.length){ 
-          newIndex = newIndex - 25; 
+        }else if(newIndex >= alph.length){ 
+          //end of alphabet ^
+          newIndex = newIndex - 26; 
           newWord += alph[newIndex]; 
         }else{
           newWord += alph[newIndex]; //The index is inside the array and has no issues
         }
       }else{
+        //this means that its a special character
         newWord += input[i]; 
       }
     }
