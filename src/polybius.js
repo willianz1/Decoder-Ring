@@ -57,12 +57,16 @@ const polybiusModule = (function () {
     }, []);
   }
 
-  // decoding
+  // decode back to english
   if (!encode) {
+    //replace all spaces to 
     let spacesAdded = input.replace(" ", 65);
-    // checks that there are an even number of characters so that all coordinate pairs are kept together
+    // if theres an odd amount in the length it automatically returns false
     if (spacesAdded.length % 2 !== 0) return false;
+
+    // puts the numbers in pairs
     let coordinates = spacesAdded.match(/..?/g);
+    
     result = coordinates.map((yx) => {
       let rowIndex = yx.split("")[1] - 1;
       let columnIndex = yx.split("")[0] - 1;
